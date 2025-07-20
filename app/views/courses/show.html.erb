@@ -15,12 +15,9 @@
 <hr>
 
 <form action="/modify_course/<%= @course.id %>" method="post">
-  <div>
-    <label for="title_box">
-      Title
-    </label>
-
-    <input type="text" id="title_box" name="query_title">
+ <div>
+    <label for="title_box">Title</label>
+    <input type="text" id="title_box" name="query_title" value="<%= @course.title %>">
   </div>
 
   <div>
@@ -63,7 +60,7 @@
     Title
   </dt>
   <dd>
-    <%= course.title %>
+    <%= @course.title %>
   </dd>
 
   <dt>

@@ -35,15 +35,16 @@
   </tr>
 
  <% @departments.each do |department| %>
-  <td><%= department.id %></td>
-  <td><%= department.name %></td>
-  <td>
-    <a href="/departments/<%= department.id %>">
-          Show details
-        </a>
-      </td>
-    </tr>
-  <% end %>
+  <tr>
+    <td><%= department.id %></td>
+    <td><%= department.name %></td>
+    <td>
+      <a href="/departments/<%= department.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+<% end %>
 </table>
 
 <hr>

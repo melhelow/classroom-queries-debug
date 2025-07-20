@@ -18,7 +18,7 @@
       Term offered
     </label>
 
-    <input type="text" id="term_offered_box" name="query_term">
+    <input type="text" id="term_offered_box" name="query_term_offered">
   </div>
 
   <div>
@@ -78,10 +78,10 @@
         <%= course.term_offered %>
       </td>
 
-      <td>
-        <% department = Department.where({ :id => course.department_id }).at(0) %>
-        <a href="/departments/<%= department.id %>"><%= department.name %></a>
-      </td>
+        <td>
+          <% department = Department.where({ :id => course.department_id }).at(0) %>
+          <a href="/departments/<%= department.id %>"><%= department.name %></a>
+        </td>
 
       <td>
         <a href="/courses/<%= course.id %>">

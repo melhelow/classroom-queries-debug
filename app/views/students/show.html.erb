@@ -76,38 +76,33 @@
 <h3>Course Load</h3>
 
 <form action="/insert_enrollment" method="post">
-
-  <input type="hidden" id="student_id_box" name="query_student_id" value="<%= @student.id %>">
+  <input type="hidden" name="query_student_id" value="<%= @student.id %>">
 
   <div>
     <label for="course_id_box">
       Course
     </label>
 
-    <select id="course_id_box" name="query_course_id">
-      <% Course.order({ :title => :asc }).each do |a_course| %>
-        <option value="<%= a_course.id %>">
-          <%= a_course.title %>
-        </option>
-      <% end %>
-    </select>
-  </div>
-
-  <button>
-    Enroll student
-  </button>
+  <select name="query_course_id">
+    <% Course.order(:title).each do |course| %>
+      <option value="<%= course.id %>"><%= course.title %></option>
+    <% end %>
+  </select>
+  
+  <button type="submit">Enroll student</button>
 </form>
 
 <hr>
 
 <ul>
- <% enrollments = Enrollment.where({:student_id => @student.id }) %>
-<% enrollments.each do |enrollment| %>
-  <% course = Course.where({ :id => enrollment.course_id }).at(0) %>
-    <li>
-      <a href="/courses/<%= course.id %>">
-        <%= course.title %>
-      </a>
-    </li>
+  <% Enrollment.where({:student_id => @student.id }).each do |enrollment| %>
+    <% course = Course.find_by(id: enrollment.course_id) %>
+    <% if course %>
+      <li>
+        <a href="/courses/<%= course.id %>">
+          <%= course.title %>
+        </a>
+      </li>
+    <% end %>
   <% end %>
 </ul>
