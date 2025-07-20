@@ -34,18 +34,11 @@
     </th>
   </tr>
 
-  <% @departments.each do |department| %>
-    <tr>
-      <td>
-        <%= @department.id %>
-      </td>
-
-      <td>
-        <%= @department.name %>
-      </td>
-
-      <td>
-        <a href="/departments/<%= @department.id %>">
+ <% @departments.each do |department| %>
+  <td><%= department.id %></td>
+  <td><%= department.name %></td>
+  <td>
+    <a href="/departments/<%= department.id %>">
           Show details
         </a>
       </td>

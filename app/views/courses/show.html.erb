@@ -1,6 +1,4 @@
-<h1>
-  Course #<%= course.id %> details
-</h1>
+<h1>Course #<%= @course.id %> details</h1>
 
 <div>
   <a href="/courses">
@@ -87,7 +85,7 @@
     Number of enrolled students
   </dt>
   <dd>
-    <%= enrollment.where({ :course_id => @course.id }) %>
+    <%= Enrollment.where({ :course_id => @course.id }).count %>
   </dd>
 </dl>
 

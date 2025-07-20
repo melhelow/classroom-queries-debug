@@ -27,8 +27,8 @@ class CoursesController < ApplicationController
   end
 
   def update
-    id = params.fetch("path_id")
-    @course = Course.where({ :id => the_id }).at(0)
+      the_id = params.fetch("path_id") 
+      @course = Course.where({ :id => the_id }).at(0)
 
     @course.title = params.fetch("query_title")
     @course.term_offered = params.fetch("query_term_offered")
@@ -43,8 +43,8 @@ class CoursesController < ApplicationController
   end
 
   def destroy
-    the_id = params.fetch("path")
-    @course = Course.where({ :id => the_id }).at(0)
+    the_id = params.fetch("path_id")  
+  @course = Course.where({ :id => the_id }).at(0)
 
     @course.destroy
 
